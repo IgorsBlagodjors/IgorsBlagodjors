@@ -8,7 +8,7 @@ void main() {
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.kbackgroundColor,
       ),
-      home: CategoryHome(),
+      home: const CategoryHome(),
     ),
   );
 }
