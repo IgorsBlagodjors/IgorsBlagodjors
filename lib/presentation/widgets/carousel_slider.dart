@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
+import 'package:fake_tech_store/design_system/constants.dart';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
@@ -44,17 +45,12 @@ class _CarouselState extends State<Carousel> {
             return Container(
               height: 110,
               decoration: BoxDecoration(
-                color: AppColors.kcontainerColor,
+                color: AppColors.darkBlue,
                 borderRadius: BorderRadius.circular(6),
-                boxShadow: const [
-                  BoxShadow(
-                    offset: Offset(0, 8),
-                    blurRadius: 40,
-                    color: Color.fromRGBO(0, 0, 0, 0.04),
-                  ),
-                ],
+                boxShadow: containerShadow,
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -85,7 +81,9 @@ class _CarouselState extends State<Carousel> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 89),
+                    padding: const EdgeInsets.only(
+                      right: 40,
+                    ),
                     child: Image.asset(
                       widget.items[index]['image'],
                       width: 57,
@@ -104,6 +102,7 @@ class _CarouselState extends State<Carousel> {
           dotsCount: widget.items.length,
           position: _currentPage,
           decorator: DotsDecorator(
+            activeSize: const Size(34, 7),
             size: const Size(34, 7),
             color: AppColors.dotsIndicatorColor.withOpacity(0.32),
             activeColor: AppColors.dotsIndicatorColor,
