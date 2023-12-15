@@ -21,7 +21,7 @@ class CategoryContainer extends StatelessWidget {
         padding: const EdgeInsets.only(top: 28, left: 24),
         child: Text(
           text,
-          style: AppStyles.categoryStyle,
+          style: AppStyles.font16Weight18.copyWith(color: AppColors.blackText),
         ),
       ),
     );

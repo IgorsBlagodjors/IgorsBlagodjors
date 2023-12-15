@@ -1,6 +1,8 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/domain/home_lw_items.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
+import 'package:fake_tech_store/presentation/widgets/home_lw.dart';
 import 'package:flutter/material.dart';
 
 class SelectedCategory extends StatelessWidget {
@@ -82,16 +84,20 @@ class SelectedCategory extends StatelessWidget {
                       fontSize: 14,
                       color: AppColors.greyColor),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 6,
                 ),
                 Image.asset('assets/icons/change_icon.png'),
-                SizedBox(
+                const SizedBox(
                   width: 51,
                 ),
                 Image.asset('assets/icons/mise_en_page.png'),
               ],
             ),
+            const SizedBox(
+              height: 32,
+            ),
+            HomeLW(item: homeLWList),
           ],
         ),
       ),

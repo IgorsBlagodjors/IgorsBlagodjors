@@ -19,9 +19,15 @@ class AppStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.blackText,
   );
-  static const categoryStyle = TextStyle(
+  static const font16Weight18 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
-    color: AppColors.blackText,
+  );
+  static const font16Weight600 =
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
+
+  static const font12Weight500 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
   );
 }
