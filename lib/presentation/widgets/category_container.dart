@@ -16,7 +16,6 @@ class CategoryContainer extends StatelessWidget {
         color: AppColors.themeColorWhite,
       ),
       height: 77,
-      width: 343,
       child: Padding(
         padding: const EdgeInsets.only(top: 28, left: 24),
         child: Text(

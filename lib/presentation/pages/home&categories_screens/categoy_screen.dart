@@ -37,6 +37,7 @@ class CategoryScreen extends StatelessWidget {
                   height: 25,
                 ),
                 const Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CategoryContainer(
                       text: 'All',
