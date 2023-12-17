@@ -31,7 +31,7 @@ class CategoryScreen extends StatelessWidget {
                 ),
                 const Text(
                   'Categories',
-                  style: AppStyles.secondaryHeading,
+                  style: AppStyles.font24Weight700,
                 ),
                 const SizedBox(
                   height: 25,

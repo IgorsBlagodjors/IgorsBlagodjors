@@ -1,5 +1,5 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
-import 'package:fake_tech_store/presentation/pages/selected_category.dart';
+import 'package:fake_tech_store/presentation/pages/search_screens/search.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,7 +8,7 @@ void main() {
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.themeColorWhite,
       ),
-      home: const SelectedCategory(),
+      home: const Search(),
     ),
   );
 }

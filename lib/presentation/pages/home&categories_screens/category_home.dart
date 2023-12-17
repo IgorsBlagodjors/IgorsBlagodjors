@@ -21,11 +21,19 @@ class CategoryHome extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 24),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24),
                   child: Text(
                     'Home',
-                    style: AppStyles.mainHeading,
+                    style: AppStyles.font32Weight800.copyWith(
+                      shadows: const [
+                        Shadow(
+                          color: Color.fromRGBO(0, 0, 0, 0.25),
+                          offset: Offset(0, 4),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(

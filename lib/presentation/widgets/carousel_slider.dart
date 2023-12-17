@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/constants.dart';
+import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
@@ -60,10 +61,8 @@ class _CarouselState extends State<Carousel> {
                         padding: const EdgeInsets.only(top: 36, left: 24),
                         child: Text(
                           widget.items[index]['title'],
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFFFFFFFF),
+                          style: AppStyles.font18Weight600.copyWith(
+                            color: AppColors.whiteColor,
                           ),
                         ),
                       ),
@@ -71,10 +70,8 @@ class _CarouselState extends State<Carousel> {
                         padding: const EdgeInsets.only(top: 4, left: 24),
                         child: Text(
                           widget.items[index]['price'],
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFFE0ECF8),
+                          style: AppStyles.font12Weight500.copyWith(
+                            color: AppColors.lightBlue,
                           ),
                         ),
                       ),

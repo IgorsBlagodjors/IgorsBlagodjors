@@ -29,14 +29,12 @@ class SelectedCategory extends StatelessWidget {
             ),
             const Text(
               'Laptop',
-              style: AppStyles.secondaryHeading,
+              style: AppStyles.font24Weight700,
             ),
             const SizedBox(
               height: 24,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            Wrap(
               children: [
                 Container(
                   height: 33,
@@ -74,24 +72,24 @@ class SelectedCategory extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 32,
+                const Padding(
+                  padding: EdgeInsets.only(top: 8, left: 32),
+                  child: Text(
+                    'Filters',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: AppColors.greyColor),
+                  ),
                 ),
-                const Text(
-                  'Filters',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: AppColors.greyColor),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15, left: 6),
+                  child: Image.asset('assets/icons/change_icon.png'),
                 ),
-                const SizedBox(
-                  width: 6,
+                Padding(
+                  padding: const EdgeInsets.only(top: 7, left: 51),
+                  child: Image.asset('assets/icons/mise_en_page.png'),
                 ),
-                Image.asset('assets/icons/change_icon.png'),
-                const SizedBox(
-                  width: 51,
-                ),
-                Image.asset('assets/icons/mise_en_page.png'),
               ],
             ),
             const SizedBox(

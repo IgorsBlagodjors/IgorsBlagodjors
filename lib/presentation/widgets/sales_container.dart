@@ -1,5 +1,6 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/constants.dart';
+import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:flutter/material.dart';
 
 class SalesContainer extends StatelessWidget {
@@ -38,14 +39,11 @@ class SalesContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(2),
                 color: AppColors.lightBlue,
               ),
-              child: const Center(
+              child: Center(
                 child: Text(
                   '-50%',
-                  style: TextStyle(
-                    color: AppColors.blueTextColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: AppStyles.font12Weight500
+                      .copyWith(color: AppColors.blueTextColor),
                 ),
               ),
             ),
@@ -66,11 +64,8 @@ class SalesContainer extends StatelessWidget {
           Center(
             child: Text(
               text,
-              style: const TextStyle(
-                color: AppColors.blackText,
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-              ),
+              style: AppStyles.font18Weight600
+                  .copyWith(color: AppColors.blackText),
             ),
           ),
         ],
