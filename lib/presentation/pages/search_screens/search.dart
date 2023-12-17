@@ -1,6 +1,6 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
-import 'package:fake_tech_store/domain/lastestSearchList.dart';
+import 'package:fake_tech_store/domain/lastest_search_list.dart';
 import 'package:fake_tech_store/domain/search_lw_items.dart';
 import 'package:fake_tech_store/presentation/widgets/last_search_lw.dart';
 import 'package:fake_tech_store/presentation/widgets/search_lw.dart';
@@ -93,6 +93,9 @@ class Search extends StatelessWidget {
                 'Last viewed',
                 style: AppStyles.font24Weight700
                     .copyWith(color: AppColors.blackText),
+              ),
+              const SizedBox(
+                height: 16,
               ),
               SearchLW(item: searchLWList),
               const SizedBox(

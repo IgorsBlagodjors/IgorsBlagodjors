@@ -9,4 +9,14 @@ List<Map<String, dynamic>> searchLWList = [
     'title': 'USB C Charger',
     'price': 'USD 11',
   },
+  {
+    'image': 'assets/Product.png',
+    'title': 'USB C Charger',
+    'price': 'USD 11',
+  },
+  {
+    'image': 'assets/Product.png',
+    'title': 'USB C Charger',
+    'price': 'USD 11',
+  },
 ];

@@ -17,26 +17,28 @@ class LastSearchLW extends StatelessWidget {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(left: 8),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Smart speaker',
-                style: AppStyles.font16Weight400.copyWith(
-                  color: AppColors.greyColor,
-                ),
-              ),
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                child: Wrap(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 13.19),
-                      child: Image.asset('assets/icons/erase_icon.png'),
+                    Text(
+                      lastestSearch[index],
+                      style: AppStyles.font16Weight400.copyWith(
+                        color: AppColors.greyColor,
+                      ),
                     ),
                   ],
                 ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 13.19),
+                    child: Image.asset('assets/icons/erase_icon.png'),
+                  ),
+                ],
               ),
             ],
           ),
