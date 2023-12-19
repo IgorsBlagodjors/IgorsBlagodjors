@@ -1,9 +1,10 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/domain/carousel_slider_items.dart';
-import 'package:fake_tech_store/presentation/widgets/carousel_slider.dart';
-import 'package:fake_tech_store/presentation/widgets/category_icon.dart';
-import 'package:fake_tech_store/presentation/widgets/sales_container.dart';
+import 'package:fake_tech_store/domain/home_sales_lw.dart';
+import 'package:fake_tech_store/presentation/widgets/home_carousel_slider.dart';
+import 'package:fake_tech_store/presentation/widgets/home_category_icon.dart';
+import 'package:fake_tech_store/presentation/widgets/home_sales_lw.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,7 +19,6 @@ class CategoryHome extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -43,12 +43,11 @@ class CategoryHome extends StatelessWidget {
                 const SizedBox(
                   height: 29,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
                     Expanded(
-                      child: Categories(
+                      child: CategoryIcon(
+                        onTap: () {},
                         imageWidth: 18,
                         imageHeight: 12,
                         iconData: Icons.list,
@@ -57,7 +56,8 @@ class CategoryHome extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Categories(
+                      child: CategoryIcon(
+                        onTap: () {},
                         imageWidth: 19.9,
                         imageHeight: 19,
                         iconData: Icons.star_border,
@@ -66,7 +66,8 @@ class CategoryHome extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Categories(
+                      child: CategoryIcon(
+                        onTap: () {},
                         imageWidth: 18,
                         imageHeight: 19,
                         iconData: FontAwesomeIcons.gift,
@@ -75,7 +76,8 @@ class CategoryHome extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Categories(
+                      child: CategoryIcon(
+                        onTap: () {},
                         imageWidth: 20,
                         imageHeight: 18,
                         iconData: FontAwesomeIcons.user,
@@ -101,26 +103,9 @@ class CategoryHome extends StatelessWidget {
                 const SizedBox(
                   height: 17,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: SalesContainer(
-                          image: 'assets/smartphone_picture.png',
-                          imageWidth: 61.7,
-                          imageHeight: 130,
-                          text: 'Smartphones'),
-                    ),
-                    Expanded(
-                      child: SalesContainer(
-                          image: 'assets/monitor_picture.png',
-                          imageWidth: 97.5,
-                          imageHeight: 130,
-                          text: 'Monitors'),
-                    ),
-                  ],
-                ),
+                HomeSalesLW(
+                  listOfItems: homeSalesLW,
+                )
               ],
             ),
           ),

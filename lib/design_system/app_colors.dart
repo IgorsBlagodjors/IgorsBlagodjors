@@ -9,4 +9,5 @@ class AppColors {
   static const Color lightBlue = Color(0xFFE0ECF8);
   static const Color blueTextColor = Color(0xFF1F53E4);
   static const Color greyColor = Color(0xFFA7A9BE);
+  static const Color botomNavigationColor = Color(0xFFEFF5FB);
 }

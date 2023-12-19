@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/constants.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
@@ -95,15 +95,8 @@ class _CarouselState extends State<Carousel> {
         const SizedBox(
           height: 12,
         ),
-        DotsIndicator(
-          dotsCount: widget.items.length,
-          position: _currentPage,
-          decorator: DotsDecorator(
-            activeSize: const Size(34, 7),
-            size: const Size(34, 7),
-            color: AppColors.dotsIndicatorColor.withOpacity(0.32),
-            activeColor: AppColors.dotsIndicatorColor,
-          ),
+        CarouselIndicator(
+          currentPage: _currentPage,
         ),
       ],
     );
