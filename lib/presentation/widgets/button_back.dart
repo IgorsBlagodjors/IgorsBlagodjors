@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 
 class ButtonBack extends StatelessWidget {
   final Function() onTap;
-  const ButtonBack({super.key, required this.onTap});
+
+  const ButtonBack({
+    super.key,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -166,20 +166,16 @@ class _SelectedGoodState extends State<SelectedGood> {
                   const SizedBox(
                     height: 32,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 53,
-                    child: AppButton(
-                      onPresess: () {
-                        setState(() {
-                          isBlurred = true;
-                        });
-                      },
-                      textClass: Text(
-                        'Add to cart',
-                        style: AppStyles.font18Weight600.copyWith(
-                          color: AppColors.whiteColor,
-                        ),
+                  AppButton(
+                    onPresess: () {
+                      setState(() {
+                        isBlurred = true;
+                      });
+                    },
+                    textClass: Text(
+                      'Add to cart',
+                      style: AppStyles.font18Weight600.copyWith(
+                        color: AppColors.whiteColor,
                       ),
                     ),
                   ),
@@ -218,20 +214,16 @@ class _SelectedGoodState extends State<SelectedGood> {
                           const SizedBox(
                             height: 48,
                           ),
-                          SizedBox(
-                            height: 53,
-                            width: double.infinity,
-                            child: AppButton(
-                              onPresess: () {
-                                setState(() {
-                                  isBlurred = false;
-                                });
-                              },
-                              textClass: Text(
-                                'Back to shopping',
-                                style: AppStyles.font18Weight600
-                                    .copyWith(color: AppColors.whiteColor),
-                              ),
+                          AppButton(
+                            onPresess: () {
+                              setState(() {
+                                isBlurred = false;
+                              });
+                            },
+                            textClass: Text(
+                              'Back to shopping',
+                              style: AppStyles.font18Weight600
+                                  .copyWith(color: AppColors.whiteColor),
                             ),
                           ),
                         ],

@@ -4,23 +4,28 @@ import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:flutter/material.dart';
 
 class CategoryContainer extends StatelessWidget {
+  final Function() onTap;
   final String text;
-  const CategoryContainer({super.key, required this.text});
+  const CategoryContainer({super.key, required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        boxShadow: containerShadow,
-        color: AppColors.themeColorWhite,
-      ),
-      height: 77,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 28, left: 24),
-        child: Text(
-          text,
-          style: AppStyles.font18Weight600.copyWith(color: AppColors.blackText),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          boxShadow: containerShadow,
+          color: AppColors.themeColorWhite,
+        ),
+        height: 77,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 28, left: 24),
+          child: Text(
+            text,
+            style:
+                AppStyles.font18Weight600.copyWith(color: AppColors.blackText),
+          ),
         ),
       ),
     );

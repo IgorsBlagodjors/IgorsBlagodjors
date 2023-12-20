@@ -22,7 +22,11 @@ class SelectedCategory extends StatelessWidget {
                 top: 61,
                 right: 4,
               ),
-              child: ButtonBack(onTap: () {}),
+              child: ButtonBack(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ),
             const SizedBox(
               height: 24,

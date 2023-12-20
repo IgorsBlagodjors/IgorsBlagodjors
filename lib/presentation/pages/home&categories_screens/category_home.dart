@@ -2,6 +2,7 @@ import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/domain/carousel_slider_items.dart';
 import 'package:fake_tech_store/domain/home_sales_lw.dart';
+import 'package:fake_tech_store/presentation/pages/home&categories_screens/categoy_screen.dart';
 import 'package:fake_tech_store/presentation/widgets/home_carousel_slider.dart';
 import 'package:fake_tech_store/presentation/widgets/home_category_icon.dart';
 import 'package:fake_tech_store/presentation/widgets/home_sales_lw.dart';
@@ -47,7 +48,13 @@ class CategoryHome extends StatelessWidget {
                   children: [
                     Expanded(
                       child: CategoryIcon(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const CategoryScreen(),
+                            ),
+                          );
+                        },
                         imageWidth: 18,
                         imageHeight: 12,
                         iconData: Icons.list,

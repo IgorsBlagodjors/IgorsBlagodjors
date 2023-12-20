@@ -1,4 +1,5 @@
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/presentation/pages/home&categories_screens/selected_category.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/category_container.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,9 @@ class CategoryScreen extends StatelessWidget {
                     left: 4,
                   ),
                   child: ButtonBack(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
                 const SizedBox(
@@ -36,40 +39,52 @@ class CategoryScreen extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CategoryContainer(
+                      onTap: () {},
                       text: 'All',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const SelectedCategory(),
+                          ),
+                        );
+                      },
                       text: 'Computers',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      onTap: () {},
                       text: 'Accessories',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      onTap: () {},
                       text: 'Smartphones',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      onTap: () {},
                       text: 'Smart objects',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      onTap: () {},
                       text: 'Speakers',
                     ),
                   ],

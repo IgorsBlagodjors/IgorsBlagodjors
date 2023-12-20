@@ -39,4 +39,8 @@ class AppStyles {
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
+  static const font12Weight400 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
 }
