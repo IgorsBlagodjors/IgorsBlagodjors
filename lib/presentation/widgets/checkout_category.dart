@@ -24,7 +24,7 @@ class CheckoutCategory extends StatelessWidget {
         children: [
           Text(
             header,
-            style: AppStyles.font18Weight600.copyWith(
+            style: AppStyles.body2BlackText.copyWith(
               color: AppColors.blackText,
             ),
           ),

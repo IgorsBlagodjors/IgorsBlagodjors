@@ -61,7 +61,7 @@ class _CarouselState extends State<Carousel> {
                         padding: const EdgeInsets.only(top: 36, left: 24),
                         child: Text(
                           widget.items[index]['title'],
-                          style: AppStyles.font18Weight600.copyWith(
+                          style: AppStyles.body2BlackText.copyWith(
                             color: AppColors.whiteColor,
                           ),
                         ),
@@ -97,6 +97,7 @@ class _CarouselState extends State<Carousel> {
         ),
         CarouselIndicator(
           currentPage: _currentPage,
+          enableShadow: true,
         ),
       ],
     );

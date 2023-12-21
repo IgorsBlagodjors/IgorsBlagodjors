@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 
 class CarouselIndicator extends StatelessWidget {
   final int currentPage;
-  const CarouselIndicator({super.key, required this.currentPage});
+  final bool? enableShadow;
+  const CarouselIndicator(
+      {super.key, required this.currentPage, this.enableShadow});
 
   @override
   Widget build(BuildContext context) {
+    Color selectedIndicatorColor = AppColors.dotsIndicatorColor;
+    Color standardIndicatorColor =
+        AppColors.dotsIndicatorColor.withOpacity(0.32);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -16,15 +21,17 @@ class CarouselIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: currentPage == 0
-                ? AppColors.dotsIndicatorColor
-                : AppColors.dotsIndicatorColor.withOpacity(0.32),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 4,
-                color: Color.fromRGBO(0, 0, 0, 0.25),
-              ),
-            ],
+                ? selectedIndicatorColor
+                : standardIndicatorColor,
+            boxShadow: enableShadow == true
+                ? [
+                    const BoxShadow(
+                      offset: Offset(0, 4),
+                      blurRadius: 4,
+                      color: Color.fromRGBO(0, 0, 0, 0.25),
+                    ),
+                  ]
+                : null,
           ),
         ),
         const SizedBox(
@@ -36,15 +43,17 @@ class CarouselIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: currentPage == 1
-                ? AppColors.dotsIndicatorColor
-                : AppColors.dotsIndicatorColor.withOpacity(0.32),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 4,
-                color: Color.fromRGBO(0, 0, 0, 0.25),
-              ),
-            ],
+                ? selectedIndicatorColor
+                : standardIndicatorColor,
+            boxShadow: enableShadow == true
+                ? [
+                    const BoxShadow(
+                      offset: Offset(0, 4),
+                      blurRadius: 4,
+                      color: Color.fromRGBO(0, 0, 0, 0.25),
+                    ),
+                  ]
+                : null,
           ),
         ),
         const SizedBox(
@@ -56,15 +65,17 @@ class CarouselIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: currentPage == 2
-                ? AppColors.dotsIndicatorColor
-                : AppColors.dotsIndicatorColor.withOpacity(0.32),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 4,
-                color: Color.fromRGBO(0, 0, 0, 0.25),
-              ),
-            ],
+                ? selectedIndicatorColor
+                : standardIndicatorColor,
+            boxShadow: enableShadow == true
+                ? [
+                    const BoxShadow(
+                      offset: Offset(0, 4),
+                      blurRadius: 4,
+                      color: Color.fromRGBO(0, 0, 0, 0.25),
+                    ),
+                  ]
+                : null,
           ),
         ),
         const SizedBox(
@@ -76,15 +87,17 @@ class CarouselIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: currentPage == 3
-                ? AppColors.dotsIndicatorColor
-                : AppColors.dotsIndicatorColor.withOpacity(0.32),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 4,
-                color: Color.fromRGBO(0, 0, 0, 0.25),
-              ),
-            ],
+                ? selectedIndicatorColor
+                : standardIndicatorColor,
+            boxShadow: enableShadow == true
+                ? [
+                    const BoxShadow(
+                      offset: Offset(0, 4),
+                      blurRadius: 4,
+                      color: Color.fromRGBO(0, 0, 0, 0.25),
+                    ),
+                  ]
+                : null,
           ),
         ),
         const SizedBox(

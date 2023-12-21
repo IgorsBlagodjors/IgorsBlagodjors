@@ -33,7 +33,7 @@ class SelectedCategory extends StatelessWidget {
             ),
             const Text(
               'Laptop',
-              style: AppStyles.font24Weight700,
+              style: AppStyles.heading,
             ),
             const SizedBox(
               height: 24,

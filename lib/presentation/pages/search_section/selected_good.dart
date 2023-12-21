@@ -4,6 +4,7 @@ import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/presentation/widgets/app_button.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
+import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
 import 'package:fake_tech_store/presentation/widgets/item_color_picker.dart';
 import 'package:fake_tech_store/presentation/widgets/selected_item_capacity.dart';
 import 'package:flutter/material.dart';
@@ -35,14 +36,18 @@ class _SelectedGoodState extends State<SelectedGood> {
                       top: 29,
                       left: 6,
                     ),
-                    child: ButtonBack(onTap: () {}),
+                    child: ButtonBack(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
                   ),
                   const SizedBox(
                     height: 24,
                   ),
                   Text(
                     'iPhone 11 Pro',
-                    style: AppStyles.font24Weight700.copyWith(
+                    style: AppStyles.heading.copyWith(
                       color: AppColors.blackText,
                     ),
                   ),
@@ -77,7 +82,9 @@ class _SelectedGoodState extends State<SelectedGood> {
                           const SizedBox(
                             height: 23,
                           ),
-                          const Text('Diaporama'),
+                          const CarouselIndicator(
+                            currentPage: 0,
+                          ),
                         ],
                       ),
                     ),
@@ -88,7 +95,7 @@ class _SelectedGoodState extends State<SelectedGood> {
                     ),
                     child: Text(
                       'Color',
-                      style: AppStyles.font18Weight600.copyWith(
+                      style: AppStyles.body2BlackText.copyWith(
                         color: AppColors.blackText,
                       ),
                     ),
@@ -129,7 +136,7 @@ class _SelectedGoodState extends State<SelectedGood> {
                     ),
                     child: Text(
                       'Capacity',
-                      style: AppStyles.font18Weight600.copyWith(
+                      style: AppStyles.body2BlackText.copyWith(
                         color: AppColors.blackText,
                       ),
                     ),
@@ -167,66 +174,62 @@ class _SelectedGoodState extends State<SelectedGood> {
                     height: 32,
                   ),
                   AppButton(
+                    text: 'Add to cart',
                     onPresess: () {
                       setState(() {
                         isBlurred = true;
                       });
                     },
-                    textClass: Text(
-                      'Add to cart',
-                      style: AppStyles.font18Weight600.copyWith(
-                        color: AppColors.whiteColor,
-                      ),
-                    ),
                   ),
                 ],
               ),
             ),
             if (isBlurred)
-              BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: 30,
-                  sigmaY: 30,
-                ),
-                child: Container(
-                  color: Colors.transparent,
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.shopping_cart_outlined,
-                            size: 64,
-                            color: AppColors.blackText,
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Text(
-                            'Product added to cart!',
-                            style: AppStyles.font24Weight700
-                                .copyWith(color: AppColors.blackText),
-                          ),
-                          const SizedBox(
-                            height: 48,
-                          ),
-                          AppButton(
-                            onPresess: () {
-                              setState(() {
-                                isBlurred = false;
-                              });
-                            },
-                            textClass: Text(
-                              'Back to shopping',
-                              style: AppStyles.font18Weight600
-                                  .copyWith(color: AppColors.whiteColor),
+              Positioned.fill(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 32,
+                    sigmaY: 32,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(255, 255, 255, 0.56),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.shopping_cart_outlined,
+                              size: 64,
+                              color: AppColors.blackText,
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            Text(
+                              'Product added to cart!',
+                              style: AppStyles.heading
+                                  .copyWith(color: AppColors.blackText),
+                            ),
+                            const SizedBox(
+                              height: 48,
+                            ),
+                            AppButton(
+                              text: 'Back to shopping',
+                              onPresess: () {
+                                setState(() {
+                                  isBlurred = false;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

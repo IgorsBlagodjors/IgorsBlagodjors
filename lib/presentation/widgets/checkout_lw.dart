@@ -65,7 +65,7 @@ class CheckoutLW extends StatelessWidget {
                       children: [
                         Text(
                           repository[index]['title'],
-                          style: AppStyles.font18Weight600.copyWith(
+                          style: AppStyles.body2BlackText.copyWith(
                             color: AppColors.blackText,
                           ),
                         ),

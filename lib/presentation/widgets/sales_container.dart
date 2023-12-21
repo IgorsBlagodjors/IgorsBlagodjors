@@ -64,8 +64,8 @@ class SalesContainer extends StatelessWidget {
           Center(
             child: Text(
               text,
-              style: AppStyles.font18Weight600
-                  .copyWith(color: AppColors.blackText),
+              style:
+                  AppStyles.body2BlackText.copyWith(color: AppColors.blackText),
             ),
           ),
         ],

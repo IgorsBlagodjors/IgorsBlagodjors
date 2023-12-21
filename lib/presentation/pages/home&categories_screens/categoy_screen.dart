@@ -34,7 +34,7 @@ class CategoryScreen extends StatelessWidget {
                 ),
                 const Text(
                   'Categories',
-                  style: AppStyles.font24Weight700,
+                  style: AppStyles.heading,
                 ),
                 const SizedBox(
                   height: 25,
@@ -43,13 +43,16 @@ class CategoryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CategoryContainer(
+                      height: 77,
                       onTap: () {},
                       text: 'All',
+                      textPaddingTop: 28,
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      height: 77,
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
@@ -58,34 +61,43 @@ class CategoryScreen extends StatelessWidget {
                         );
                       },
                       text: 'Computers',
+                      textPaddingTop: 28,
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      height: 77,
                       onTap: () {},
                       text: 'Accessories',
+                      textPaddingTop: 28,
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      height: 77,
                       onTap: () {},
                       text: 'Smartphones',
+                      textPaddingTop: 28,
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      height: 77,
                       onTap: () {},
                       text: 'Smart objects',
+                      textPaddingTop: 28,
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     CategoryContainer(
+                      height: 77,
                       onTap: () {},
                       text: 'Speakers',
+                      textPaddingTop: 28,
                     ),
                   ],
                 )

@@ -13,7 +13,7 @@ class CheckoutPaymentMethod extends StatelessWidget {
         children: [
           Text(
             'Payment',
-            style: AppStyles.font18Weight600.copyWith(
+            style: AppStyles.body2BlackText.copyWith(
               color: AppColors.blackText,
             ),
           ),
