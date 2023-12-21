@@ -14,7 +14,7 @@ class HomeLW extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 9,
           mainAxisSpacing: 8,
-          childAspectRatio: 0.944,
+          mainAxisExtent: 196,
         ),
         itemCount: item.length,
         itemBuilder: (context, index) => Container(
