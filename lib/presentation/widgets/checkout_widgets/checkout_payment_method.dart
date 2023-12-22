@@ -11,21 +11,17 @@ class CheckoutPaymentMethod extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24, right: 10),
       child: Row(
         children: [
-          Text(
+          const Text(
             'Payment',
-            style: AppStyles.body2BlackText.copyWith(
-              color: AppColors.blackText,
-            ),
+            style: AppStyles.body2BlackText,
           ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
+                const Text(
                   'Visa ***678',
-                  style: AppStyles.font16Weight500.copyWith(
-                    color: AppColors.darkBlue,
-                  ),
+                  style: AppStyles.body1darkBlue,
                 ),
                 const SizedBox(
                   height: 4,

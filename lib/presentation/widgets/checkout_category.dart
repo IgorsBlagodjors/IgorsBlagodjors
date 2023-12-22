@@ -24,9 +24,7 @@ class CheckoutCategory extends StatelessWidget {
         children: [
           Text(
             header,
-            style: AppStyles.body2BlackText.copyWith(
-              color: AppColors.blackText,
-            ),
+            style: AppStyles.body2BlackText,
           ),
           Expanded(
             child: Column(
@@ -34,9 +32,7 @@ class CheckoutCategory extends StatelessWidget {
               children: [
                 Text(
                   topText,
-                  style: AppStyles.font16Weight500.copyWith(
-                    color: AppColors.darkBlue,
-                  ),
+                  style: AppStyles.body1darkBlue,
                 ),
                 const SizedBox(
                   height: 4,

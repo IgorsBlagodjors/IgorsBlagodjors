@@ -1,5 +1,4 @@
-import 'package:fake_tech_store/design_system/app_colors.dart';
-import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/presentation/widgets/grey_text.dart';
 import 'package:flutter/material.dart';
 
 class LastSearchLW extends StatelessWidget {
@@ -21,18 +20,14 @@ class LastSearchLW extends StatelessWidget {
               Expanded(
                 child: Wrap(
                   children: [
-                    Text(
-                      lastestSearch[index],
-                      style: AppStyles.font16Weight400.copyWith(
-                        color: AppColors.greyColor,
-                      ),
+                    GreyTextWidget(
+                      text: lastestSearch[index],
+                      textSize: 16,
                     ),
                   ],
                 ),
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 13.19),

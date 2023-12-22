@@ -5,6 +5,7 @@ import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/presentation/widgets/app_button.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
+import 'package:fake_tech_store/presentation/widgets/hint_container.dart';
 import 'package:fake_tech_store/presentation/widgets/item_color_picker.dart';
 import 'package:fake_tech_store/presentation/widgets/selected_item_capacity.dart';
 import 'package:flutter/material.dart';
@@ -45,12 +46,7 @@ class _SelectedGoodState extends State<SelectedGood> {
                   const SizedBox(
                     height: 24,
                   ),
-                  Text(
-                    'iPhone 11 Pro',
-                    style: AppStyles.heading.copyWith(
-                      color: AppColors.blackText,
-                    ),
-                  ),
+                  const Text('iPhone 11 Pro', style: AppStyles.heading),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 37,
@@ -60,12 +56,12 @@ class _SelectedGoodState extends State<SelectedGood> {
                       height: 25,
                       width: 38,
                       color: const Color(0xFFE0ECF8),
-                      child: Center(
-                        child: Text(
+                      child: const HintContainer(
+                        height: 25,
+                        width: 38,
+                        textWidget: Text(
                           'New',
-                          style: AppStyles.font14Weight500.copyWith(
-                            color: AppColors.blueTextColor,
-                          ),
+                          style: AppStyles.body2lightBlue,
                         ),
                       ),
                     ),
@@ -89,15 +85,13 @@ class _SelectedGoodState extends State<SelectedGood> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       left: 16,
                     ),
                     child: Text(
                       'Color',
-                      style: AppStyles.body2BlackText.copyWith(
-                        color: AppColors.blackText,
-                      ),
+                      style: AppStyles.body2BlackText,
                     ),
                   ),
                   const SizedBox(
@@ -129,16 +123,14 @@ class _SelectedGoodState extends State<SelectedGood> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 32,
                       left: 16,
                     ),
                     child: Text(
                       'Capacity',
-                      style: AppStyles.body2BlackText.copyWith(
-                        color: AppColors.blackText,
-                      ),
+                      style: AppStyles.body2BlackText,
                     ),
                   ),
                   const SizedBox(
@@ -149,21 +141,21 @@ class _SelectedGoodState extends State<SelectedGood> {
                     children: [
                       SelectedItemCapacity(
                         currentText: '64 gb',
-                        color: AppColors.darkBlue,
+                        isSelected: true,
                       ),
                       SizedBox(
                         width: 24,
                       ),
                       SelectedItemCapacity(
                         currentText: '256 gb',
-                        color: AppColors.greyColor,
+                        isSelected: false,
                       ),
                       SizedBox(
                         width: 24,
                       ),
                       SelectedItemCapacity(
                         currentText: '512 gb',
-                        color: AppColors.greyColor,
+                        isSelected: false,
                       ),
                       SizedBox(
                         height: 32,
@@ -212,10 +204,9 @@ class _SelectedGoodState extends State<SelectedGood> {
                             const SizedBox(
                               height: 40,
                             ),
-                            Text(
+                            const Text(
                               'Product added to cart!',
-                              style: AppStyles.heading
-                                  .copyWith(color: AppColors.blackText),
+                              style: AppStyles.heading,
                             ),
                             const SizedBox(
                               height: 48,

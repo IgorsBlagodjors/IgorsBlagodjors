@@ -5,7 +5,7 @@ import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/presentation/widgets/app_button.dart';
 import 'package:fake_tech_store/presentation/widgets/checkout_category.dart';
-import 'package:fake_tech_store/presentation/widgets/checkout_lw.dart';
+import 'package:fake_tech_store/presentation/widgets/checkout_widgets/checkout_lw.dart';
 import 'package:fake_tech_store/presentation/widgets/checkout_widgets/checkout_payment_method.dart';
 import 'package:flutter/material.dart';
 

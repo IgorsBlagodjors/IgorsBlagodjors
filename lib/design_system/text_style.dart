@@ -34,12 +34,27 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
   );
+  static const body2darkBlue = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkBlue,
+  );
+  static const body2lightBlue = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blueTextColor,
+  );
   static const font16Weight600 =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
 
   static const font16Weight400 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
+  );
+  static const bodyGrey = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.greyColor,
   );
   static const font16Weight500 = TextStyle(
     fontSize: 16,
@@ -60,5 +75,10 @@ class AppStyles {
   static const font12Weight400 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
+  );
+  static const font12Weight400Grey = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.greyColor,
   );
 }

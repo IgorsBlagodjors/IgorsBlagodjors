@@ -63,12 +63,8 @@ class CheckoutLW extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          repository[index]['title'],
-                          style: AppStyles.body2BlackText.copyWith(
-                            color: AppColors.blackText,
-                          ),
-                        ),
+                        Text(repository[index]['title'],
+                            style: AppStyles.body2BlackText),
                         const SizedBox(
                           height: 4,
                         ),
@@ -97,24 +93,13 @@ class CheckoutLW extends StatelessWidget {
                 top: 8,
                 child: Image.asset('assets/icons/close_icon.png'),
               ),
-              Positioned(
+              const Positioned(
                 bottom: 42,
                 right: 20,
-                child: Container(
+                child: HintContainer(
                   height: 25,
                   width: 21,
-                  decoration: BoxDecoration(
-                    color: AppColors.lightBlue,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'x1',
-                      style: AppStyles.font14Weight400.copyWith(
-                        color: AppColors.darkBlue,
-                      ),
-                    ),
-                  ),
+                  textWidget: Text('x1', style: AppStyles.body2darkBlue),
                 ),
               ),
             ],

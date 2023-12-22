@@ -48,8 +48,7 @@ class HomeSalesLW extends StatelessWidget {
               Center(
                 child: Text(
                   listOfItems[index]['category'],
-                  style: AppStyles.body2BlackText
-                      .copyWith(color: AppColors.blackText),
+                  style: AppStyles.body2BlackText,
                 ),
               ),
             ],

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 class GreyTextWidget extends StatelessWidget {
   final String text;
   final double textSize;
-  const GreyTextWidget({super.key, required this.text, required this.textSize});
+  final FontWeight? fontWeight;
+  const GreyTextWidget(
+      {super.key, required this.text, required this.textSize, this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class GreyTextWidget extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: textSize,
-        fontWeight: FontWeight.w400,
+        fontWeight: fontWeight ?? FontWeight.w400,
         color: AppColors.greyColor,
       ),
     );

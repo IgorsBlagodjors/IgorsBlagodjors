@@ -3,9 +3,9 @@ import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/domain/carousel_slider_items.dart';
 import 'package:fake_tech_store/domain/home_sales_lw.dart';
 import 'package:fake_tech_store/presentation/pages/home&categories_screens/categoy_screen.dart';
-import 'package:fake_tech_store/presentation/widgets/home_carousel_slider.dart';
-import 'package:fake_tech_store/presentation/widgets/home_category_icon.dart';
-import 'package:fake_tech_store/presentation/widgets/home_sales_lw.dart';
+import 'package:fake_tech_store/presentation/widgets/home_widgets/home_carousel_slider.dart';
+import 'package:fake_tech_store/presentation/widgets/home_widgets/home_category_icon.dart';
+import 'package:fake_tech_store/presentation/widgets/home_widgets/home_sales_lw.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

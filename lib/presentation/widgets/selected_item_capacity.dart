@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 
 class SelectedItemCapacity extends StatelessWidget {
   final String currentText;
-  final Color? color;
+  final bool isSelected;
   const SelectedItemCapacity({
     super.key,
     required this.currentText,
-    this.color,
+    required this.isSelected,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       currentText,
-      style: AppStyles.font16Weight500.copyWith(
-        color: color,
-      ),
+      style: isSelected == true ? AppStyles.body1darkBlue : AppStyles.bodyGrey,
     );
   }
 }
