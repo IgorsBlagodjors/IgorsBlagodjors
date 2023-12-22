@@ -6,8 +6,8 @@ import 'package:fake_tech_store/presentation/widgets/app_button.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
 import 'package:fake_tech_store/presentation/widgets/hint_container.dart';
-import 'package:fake_tech_store/presentation/widgets/item_color_picker.dart';
-import 'package:fake_tech_store/presentation/widgets/selected_item_capacity.dart';
+import 'package:fake_tech_store/presentation/widgets/search_widgets/item_color_picker.dart';
+import 'package:fake_tech_store/presentation/widgets/search_widgets/selected_item_capacity.dart';
 import 'package:flutter/material.dart';
 
 class SelectedGood extends StatefulWidget {
