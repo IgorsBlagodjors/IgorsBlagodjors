@@ -1,10 +1,11 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/domain/electronics_class.dart';
 import 'package:flutter/material.dart';
 
 class HomeGW extends StatelessWidget {
-  final List<Map<String, dynamic>> item;
-  const HomeGW({super.key, required this.item});
+  final List<Electronics> data;
+  const HomeGW({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class HomeGW extends StatelessWidget {
           mainAxisSpacing: 8,
           mainAxisExtent: 196,
         ),
-        itemCount: item.length,
+        itemCount: data.length,
         itemBuilder: (context, index) => Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
@@ -36,14 +37,19 @@ class HomeGW extends StatelessWidget {
                 height: 143,
                 width: double.infinity,
                 color: AppColors.whiteColor,
-                child: Center(child: Image.asset(item[index]['image'])),
+                child: Center(
+                  child: Image.network(
+                    data[index].images[0],
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
                   left: 12,
                 ),
                 child: Text(
-                  item[index]['title'],
+                  data[index].brand,
+                  overflow: TextOverflow.ellipsis,
                   style: AppStyles.font16Weight600.copyWith(
                     color: AppColors.blackText,
                   ),
@@ -55,7 +61,8 @@ class HomeGW extends StatelessWidget {
                   left: 12,
                 ),
                 child: Text(
-                  item[index]['price'],
+                  'USD ${data[index].price}',
+                  overflow: TextOverflow.ellipsis,
                   style: AppStyles.font12Weight500.copyWith(
                     color: AppColors.darkBlue,
                   ),

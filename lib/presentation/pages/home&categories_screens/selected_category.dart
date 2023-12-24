@@ -1,13 +1,14 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
-import 'package:fake_tech_store/domain/home_lw_items.dart';
+import 'package:fake_tech_store/domain/electronics_class.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/grey_text.dart';
 import 'package:fake_tech_store/presentation/widgets/home_widgets/home_gw.dart';
 import 'package:flutter/material.dart';
 
 class SelectedCategory extends StatelessWidget {
-  const SelectedCategory({super.key});
+  final List<Electronics> data;
+  const SelectedCategory({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +112,9 @@ class SelectedCategory extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              HomeGW(item: homeLWList),
+              HomeGW(
+                data: data,
+              ),
             ],
           ),
         ),

@@ -43,7 +43,7 @@ class CategoryHome extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const CategoryScreen(),
+                              builder: (context) => CategoryScreen.withCubit(),
                             ),
                           );
                         },
