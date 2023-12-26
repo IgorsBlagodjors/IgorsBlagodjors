@@ -6,8 +6,12 @@ class ElectronicsApiClient {
   final Dio _dio;
   ElectronicsApiClient(this._dio);
 
-  Future<List<Electronics>> getAllElectronics() async {
-    final response = await _dio.get('products');
+  Future<List<Electronics>> getAllElectronics(String category) async {
+    final queryParam = {
+      'q': category,
+    };
+    final response =
+        await _dio.get('/products/search', queryParameters: queryParam);
     final fullResponse = ElectronicsFullRespons.fromJson(response.data);
     return fullResponse.toModel();
   }

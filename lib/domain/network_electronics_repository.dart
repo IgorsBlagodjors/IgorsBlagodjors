@@ -9,8 +9,8 @@ class NetworkElectronicsRepository implements ElectronicsRepository {
   );
 
   @override
-  Future<List<Electronics>> getAllElectronics() async {
-    final response = await _electronicsApiClient.getAllElectronics();
+  Future<List<Electronics>> getAllElectronics(String category) async {
+    final response = await _electronicsApiClient.getAllElectronics(category);
     return response;
   }
 }

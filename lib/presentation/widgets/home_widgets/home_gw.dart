@@ -5,10 +5,18 @@ import 'package:flutter/material.dart';
 
 class HomeGW extends StatelessWidget {
   final List<Electronics> data;
-  const HomeGW({super.key, required this.data});
+  final bool isLoading;
+  const HomeGW({super.key, required this.data, required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
+    if (data.isEmpty && !isLoading) {
+      return const Expanded(
+        child: Center(
+          child: Text('Nothing found'),
+        ),
+      );
+    }
     return Expanded(
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -30,46 +38,50 @@ class HomeGW extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 143,
-                width: double.infinity,
-                color: AppColors.whiteColor,
-                child: Center(
-                  child: Image.network(
-                    data[index].images[0],
-                  ),
+          child: isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 143,
+                      width: double.infinity,
+                      color: AppColors.whiteColor,
+                      child: Center(
+                        child: Image.network(
+                          data[index].images[0],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 12,
+                      ),
+                      child: Text(
+                        data[index].brand,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppStyles.font16Weight600.copyWith(
+                          color: AppColors.blackText,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 4,
+                        left: 12,
+                      ),
+                      child: Text(
+                        'USD ${data[index].price}',
+                        overflow: TextOverflow.ellipsis,
+                        style: AppStyles.font12Weight500.copyWith(
+                          color: AppColors.darkBlue,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 12,
-                ),
-                child: Text(
-                  data[index].brand,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppStyles.font16Weight600.copyWith(
-                    color: AppColors.blackText,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 4,
-                  left: 12,
-                ),
-                child: Text(
-                  'USD ${data[index].price}',
-                  overflow: TextOverflow.ellipsis,
-                  style: AppStyles.font12Weight500.copyWith(
-                    color: AppColors.darkBlue,
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

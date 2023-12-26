@@ -14,10 +14,10 @@ class CategoryStateCubit extends Cubit<CategoryState> {
           ),
         );
 
-  Future<void> loadCategorys() async {
+  Future<void> loadCategorys(String category) async {
     emit(state.copyWith(isLoading: true));
     try {
-      final items = await _electricsRepository.getAllElectronics();
+      final items = await _electricsRepository.getAllElectronics(category);
       emit(state.copyWith(items: items, isLoading: false));
     } on Exception catch (ex, stacktrace) {
       print('Failed to load: ex $ex, stacktrace: $stacktrace');

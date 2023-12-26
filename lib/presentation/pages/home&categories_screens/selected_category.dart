@@ -1,22 +1,51 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
-import 'package:fake_tech_store/domain/electronics_class.dart';
+import 'package:fake_tech_store/presentation/bloc/category_state.dart';
+import 'package:fake_tech_store/presentation/bloc/category_state_cubit.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/grey_text.dart';
 import 'package:fake_tech_store/presentation/widgets/home_widgets/home_gw.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SelectedCategory extends StatelessWidget {
-  final List<Electronics> data;
-  const SelectedCategory({super.key, required this.data});
+class SelectedCategory extends StatefulWidget {
+  final String category;
+  const SelectedCategory({super.key, required this.category});
+
+  @override
+  State<SelectedCategory> createState() => _SelectedCategoryState();
+  static Widget withCubit({required String category}) => BlocProvider(
+        create: (context) => CategoryStateCubit(
+          context.read(),
+        ),
+        child: SelectedCategory(
+          category: category,
+        ),
+      );
+}
+
+class _SelectedCategoryState extends State<SelectedCategory> {
+  late final CategoryStateCubit _cubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _cubit = context.read();
+    _cubit.loadCategorys(widget.category);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
+    return BlocBuilder<CategoryStateCubit, CategoryState>(
+      builder: (context, state) {
+        Widget? child;
+        if (state.isError) {
+          child = const Center(
+            child: Text('Failure error'),
+          );
+        } else {
+          final data = state.items;
+          child = Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -114,11 +143,20 @@ class SelectedCategory extends StatelessWidget {
               ),
               HomeGW(
                 data: data,
+                isLoading: state.isLoading,
               ),
             ],
+          );
+        }
+        return SafeArea(
+          child: Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: child,
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
