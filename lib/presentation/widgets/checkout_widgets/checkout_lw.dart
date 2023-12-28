@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/domain/electronics_class.dart';
 import 'package:fake_tech_store/presentation/widgets/hint_container.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutLW extends StatelessWidget {
-  final List<Map<String, dynamic>> repository;
+  final List<Electronics> repository;
   const CheckoutLW({super.key, required this.repository});
 
   @override
@@ -51,10 +53,9 @@ class CheckoutLW extends StatelessWidget {
                     width: double.infinity,
                     color: AppColors.whiteColor,
                     child: Center(
-                      child: Image.asset(
-                        repository[index]['image'],
-                      ),
-                    ),
+                        child: CachedNetworkImage(
+                      imageUrl: repository[index].imageUrl,
+                    )),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -63,13 +64,16 @@ class CheckoutLW extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(repository[index]['title'],
-                            style: AppStyles.body2BlackText),
+                        Text(
+                          repository[index].title,
+                          style: AppStyles.body2BlackText,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         const SizedBox(
                           height: 4,
                         ),
                         Text(
-                          repository[index]['price'],
+                          '${repository[index].currency} ${repository[index].priceValue}',
                           style: AppStyles.font14Weight500.copyWith(
                             color: AppColors.darkBlue,
                           ),
@@ -78,7 +82,7 @@ class CheckoutLW extends StatelessWidget {
                           height: 8,
                         ),
                         Text(
-                          repository[index]['color'],
+                          'color',
                           style: AppStyles.font12Weight400.copyWith(
                             color: AppColors.greyColor,
                           ),

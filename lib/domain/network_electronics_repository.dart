@@ -7,6 +7,7 @@ class NetworkElectronicsRepository implements ElectronicsRepository {
   NetworkElectronicsRepository(
     this._electronicsApiClient,
   );
+  List<Electronics> checkoutList = [];
 
   @override
   Future<List<Electronics>> getAllElectronics(
@@ -14,5 +15,16 @@ class NetworkElectronicsRepository implements ElectronicsRepository {
     final response = await _electronicsApiClient.getAllElectronics(
         category: category, offset: offset);
     return response;
+  }
+
+  @override
+  Future<void> addToCard(Electronics item) async {
+    checkoutList.add(item);
+    print(checkoutList);
+  }
+
+  @override
+  Future<List<Electronics>> getCheckoutItems() async {
+    return checkoutList;
   }
 }

@@ -1,7 +1,11 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
+import 'package:fake_tech_store/design_system/constants.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/domain/electronics_class.dart';
+import 'package:fake_tech_store/presentation/bloc/category_state_cubit.dart';
 import 'package:fake_tech_store/presentation/widgets/app_button.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
@@ -9,16 +13,38 @@ import 'package:fake_tech_store/presentation/widgets/hint_container.dart';
 import 'package:fake_tech_store/presentation/widgets/search_widgets/item_color_picker.dart';
 import 'package:fake_tech_store/presentation/widgets/search_widgets/selected_item_capacity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectedGood extends StatefulWidget {
-  const SelectedGood({super.key});
+  final Electronics singleGood;
+  const SelectedGood({
+    super.key,
+    required this.singleGood,
+  });
 
   @override
   State<SelectedGood> createState() => _SelectedGoodState();
+  static Widget withCubit({required Electronics singleGood}) => BlocProvider(
+        create: (context) => CategoryStateCubit(
+          context.read(),
+        ),
+        child: SelectedGood(
+          singleGood: singleGood,
+        ),
+      );
 }
 
 class _SelectedGoodState extends State<SelectedGood> {
+  late final CategoryStateCubit _cubit;
   bool isBlurred = false;
+  SelectedItemParam? selectedCapacity;
+  SelectedItemParam? selectedColor;
+  @override
+  void initState() {
+    super.initState();
+    _cubit = BlocProvider.of<CategoryStateCubit>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,7 +72,10 @@ class _SelectedGoodState extends State<SelectedGood> {
                   const SizedBox(
                     height: 24,
                   ),
-                  const Text('iPhone 11 Pro', style: AppStyles.heading),
+                  Text(
+                    widget.singleGood.title,
+                    style: AppStyles.heading,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 37,
@@ -72,8 +101,8 @@ class _SelectedGoodState extends State<SelectedGood> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            'assets/iphone.png',
+                          CachedNetworkImage(
+                            imageUrl: widget.singleGood.imageUrl,
                           ),
                           const SizedBox(
                             height: 23,
@@ -97,29 +126,73 @@ class _SelectedGoodState extends State<SelectedGood> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ItemColorPicker(
-                        backgroundColor: Color(0xFF52514F),
+                        onTap: () {
+                          setState(() {
+                            selectedColor = SelectedItemParam.first;
+                          });
+                        },
+                        backgroundColor:
+                            selectedColor == SelectedItemParam.first
+                                ? null
+                                : const Color(0xFF171717),
+                        borderColor: selectedColor == SelectedItemParam.first
+                            ? const Color(0xFF0001FC)
+                            : null,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 16,
                       ),
                       ItemColorPicker(
-                        borderColor: Color(0xFF0001FC),
+                        onTap: () {
+                          setState(() {
+                            selectedColor = SelectedItemParam.second;
+                          });
+                        },
+                        backgroundColor:
+                            selectedColor == SelectedItemParam.second
+                                ? null
+                                : const Color(0xFF3F427D),
+                        borderColor: selectedColor == SelectedItemParam.second
+                            ? const Color(0xFF0001FC)
+                            : null,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 16,
                       ),
                       ItemColorPicker(
-                        backgroundColor: Color(0xFF6F7972),
+                        onTap: () {
+                          setState(() {
+                            selectedColor = SelectedItemParam.third;
+                          });
+                        },
+                        backgroundColor:
+                            selectedColor == SelectedItemParam.third
+                                ? null
+                                : const Color(0xFFD1C6C6),
+                        borderColor: selectedColor == SelectedItemParam.third
+                            ? const Color(0xFF0001FC)
+                            : null,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 16,
                       ),
                       ItemColorPicker(
-                        backgroundColor: Color(0xFFF5D8C0),
+                        onTap: () {
+                          setState(() {
+                            selectedColor = SelectedItemParam.fourth;
+                          });
+                        },
+                        backgroundColor:
+                            selectedColor == SelectedItemParam.fourth
+                                ? null
+                                : const Color(0xFFF5F1F1),
+                        borderColor: selectedColor == SelectedItemParam.fourth
+                            ? const Color(0xFF0001FC)
+                            : null,
                       ),
                     ],
                   ),
@@ -136,28 +209,44 @@ class _SelectedGoodState extends State<SelectedGood> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SelectedItemCapacity(
+                        onTap: () {
+                          setState(() {
+                            selectedCapacity = SelectedItemParam.first;
+                          });
+                        },
                         currentText: '64 gb',
-                        isSelected: true,
+                        isSelected: selectedCapacity == SelectedItemParam.first,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 24,
                       ),
                       SelectedItemCapacity(
+                        onTap: () {
+                          setState(() {
+                            selectedCapacity = SelectedItemParam.second;
+                          });
+                        },
                         currentText: '256 gb',
-                        isSelected: false,
+                        isSelected:
+                            selectedCapacity == SelectedItemParam.second,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 24,
                       ),
                       SelectedItemCapacity(
+                        onTap: () {
+                          setState(() {
+                            selectedCapacity = SelectedItemParam.third;
+                          });
+                        },
                         currentText: '512 gb',
-                        isSelected: false,
+                        isSelected: selectedCapacity == SelectedItemParam.third,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 32,
                       ),
                     ],
@@ -168,6 +257,7 @@ class _SelectedGoodState extends State<SelectedGood> {
                   AppButton(
                     text: 'Add to cart',
                     onPresess: () {
+                      _cubit.addToCard(widget.singleGood);
                       setState(() {
                         isBlurred = true;
                       });

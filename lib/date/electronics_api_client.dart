@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fake_tech_store/date/response.dart';
-import 'package:fake_tech_store/design_system/api_key.dart';
+import 'package:fake_tech_store/design_system/api.dart';
 import 'package:fake_tech_store/domain/electronics_class.dart';
 
 class ElectronicsApiClient {

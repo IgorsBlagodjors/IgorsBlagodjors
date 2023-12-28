@@ -17,7 +17,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   final List<Widget> _pages = [
     const CategoryHome(),
     const Search(),
-    const CheckoutHome(),
+    CheckoutHome.withCubit(),
     const AccountHome(),
   ];
   @override

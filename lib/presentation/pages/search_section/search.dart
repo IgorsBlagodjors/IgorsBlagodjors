@@ -1,5 +1,6 @@
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/domain/electronics_class.dart';
 import 'package:fake_tech_store/domain/lastest_search_list.dart';
 import 'package:fake_tech_store/domain/search_lw_items.dart';
 import 'package:fake_tech_store/presentation/pages/search_section/selected_good.dart';
@@ -28,7 +29,14 @@ class Search extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const SelectedGood(),
+                      builder: (context) => const SelectedGood(
+                        singleGood: Electronics(
+                            id: 'dd',
+                            title: 'dd',
+                            imageUrl: 'dd',
+                            currency: 'ad',
+                            priceValue: 'dd'),
+                      ),
                     ),
                   );
                 },

@@ -30,7 +30,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-lib/date/design_system/api_key.dart
+lib/date/design_system/api.dart
 
 # Symbolication related
 app.*.symbols
