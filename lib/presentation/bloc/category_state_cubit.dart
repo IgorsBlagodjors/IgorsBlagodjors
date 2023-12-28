@@ -35,6 +35,7 @@ class CategoryStateCubit extends Cubit<CategoryState> {
     try {
       await _electricsRepository.addToCard(item);
     } on Exception catch (ex, stacktrace) {
+      print('Failed to load: ex $ex, stacktrace: $stacktrace');
       emit(state.copyWith(isError: true, isLoading: false));
     }
   }

@@ -5,7 +5,7 @@ import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/constants.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/domain/electronics_class.dart';
-import 'package:fake_tech_store/presentation/bloc/category_state_cubit.dart';
+import 'package:fake_tech_store/domain/repository.dart';
 import 'package:fake_tech_store/presentation/widgets/app_button.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
@@ -24,25 +24,18 @@ class SelectedGood extends StatefulWidget {
 
   @override
   State<SelectedGood> createState() => _SelectedGoodState();
-  static Widget withCubit({required Electronics singleGood}) => BlocProvider(
-        create: (context) => CategoryStateCubit(
-          context.read(),
-        ),
-        child: SelectedGood(
-          singleGood: singleGood,
-        ),
-      );
 }
 
 class _SelectedGoodState extends State<SelectedGood> {
-  late final CategoryStateCubit _cubit;
+  late final ElectronicsRepository _electronicsRepository;
   bool isBlurred = false;
   SelectedItemParam? selectedCapacity;
   SelectedItemParam? selectedColor;
   @override
   void initState() {
     super.initState();
-    _cubit = BlocProvider.of<CategoryStateCubit>(context);
+
+    _electronicsRepository = context.read();
   }
 
   @override
@@ -257,7 +250,7 @@ class _SelectedGoodState extends State<SelectedGood> {
                   AppButton(
                     text: 'Add to cart',
                     onPresess: () {
-                      _cubit.addToCard(widget.singleGood);
+                      _electronicsRepository.addToCard(widget.singleGood);
                       setState(() {
                         isBlurred = true;
                       });

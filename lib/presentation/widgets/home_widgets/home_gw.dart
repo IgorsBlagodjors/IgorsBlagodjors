@@ -38,7 +38,7 @@ class HomeGW extends StatelessWidget {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => SelectedGood.withCubit(
+                builder: (context) => SelectedGood(
                   singleGood: data[index],
                 ),
               ),
