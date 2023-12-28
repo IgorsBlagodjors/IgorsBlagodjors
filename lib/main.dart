@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   final dio = Dio(
-    BaseOptions(baseUrl: 'https://dummyjson.com'),
+    BaseOptions(baseUrl: 'https://api.ebay.com/buy/browse/v1/'),
   );
   dio.interceptors.add(
     LogInterceptor(

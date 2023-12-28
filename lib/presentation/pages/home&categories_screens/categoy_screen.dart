@@ -59,7 +59,7 @@ class CategoryScreen extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => SelectedCategory.withCubit(
-                                category: 'Computers'),
+                                category: 'computers'),
                           ),
                         );
                       },
@@ -75,7 +75,7 @@ class CategoryScreen extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => SelectedCategory.withCubit(
-                                category: 'Accessories'),
+                                category: 'accessories'),
                           ),
                         );
                       },
@@ -85,7 +85,7 @@ class CategoryScreen extends StatelessWidget {
                     ),
                     CategoryContainer(
                       height: 77,
-                      text: 'Smartphones',
+                      text: 'smartphones',
                       textPaddingTop: 28,
                       onTap: () {
                         Navigator.of(context).push(
@@ -107,7 +107,7 @@ class CategoryScreen extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => SelectedCategory.withCubit(
-                                category: 'Smart objects'),
+                                category: 'smart objects'),
                           ),
                         );
                       },
@@ -123,7 +123,7 @@ class CategoryScreen extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => SelectedCategory.withCubit(
-                                category: 'Speakers'),
+                                category: 'speakers'),
                           ),
                         );
                       },

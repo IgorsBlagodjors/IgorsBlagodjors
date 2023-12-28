@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
-import 'package:fake_tech_store/design_system/constants.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
 import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +47,13 @@ class _CarouselState extends State<Carousel> {
               decoration: BoxDecoration(
                 color: AppColors.darkBlue,
                 borderRadius: BorderRadius.circular(6),
-                boxShadow: containerShadow,
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 8),
+                    blurRadius: 40,
+                    color: Color.fromRGBO(0, 0, 0, 0.04),
+                  )
+                ],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

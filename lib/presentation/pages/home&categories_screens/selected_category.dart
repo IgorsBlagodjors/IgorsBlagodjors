@@ -26,12 +26,23 @@ class SelectedCategory extends StatefulWidget {
 
 class _SelectedCategoryState extends State<SelectedCategory> {
   late final CategoryStateCubit _cubit;
+  late final ScrollController _scrollController;
+  bool _isLoadingMoreGoods = false;
 
   @override
   void initState() {
     super.initState();
     _cubit = context.read();
     _cubit.loadCategorys(widget.category);
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -142,6 +153,7 @@ class _SelectedCategoryState extends State<SelectedCategory> {
                 height: 32,
               ),
               HomeGW(
+                scrollController: _scrollController,
                 data: data,
                 isLoading: state.isLoading,
               ),
@@ -158,5 +170,26 @@ class _SelectedCategoryState extends State<SelectedCategory> {
         );
       },
     );
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels > 0.0) {
+      FocusScope.of(context).unfocus();
+    }
+    double maxScrollExtent = _scrollController.position.maxScrollExtent;
+    double currentScrollExtent = _scrollController.position.pixels;
+    double remainingScrollExtent = maxScrollExtent - currentScrollExtent;
+    double pixelRemainder = 300;
+
+    if (remainingScrollExtent < pixelRemainder && !_isLoadingMoreGoods) {
+      _loadMoreGifs();
+    }
+  }
+
+  void _loadMoreGifs() {
+    _isLoadingMoreGoods = true;
+    _cubit.loadCategorys(widget.category).then((_) {
+      _isLoadingMoreGoods = false;
+    });
   }
 }

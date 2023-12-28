@@ -1,32 +1,26 @@
 import 'package:equatable/equatable.dart';
 
 class Electronics extends Equatable {
-  final int id;
+  final String id;
   final String title;
-  final String description;
-  final int price;
-  final String brand;
-  final String category;
-  final List<String> images;
+  final String imageUrl;
+  final String currency;
+  final String priceValue;
 
   const Electronics({
     required this.id,
     required this.title,
-    required this.brand,
-    required this.category,
-    required this.description,
-    required this.images,
-    required this.price,
+    required this.imageUrl,
+    required this.currency,
+    required this.priceValue,
   });
 
   @override
   List<Object?> get props => [
         id,
         title,
-        brand,
-        category,
-        description,
-        images,
-        price,
+        imageUrl,
+        currency,
+        priceValue,
       ];
 }

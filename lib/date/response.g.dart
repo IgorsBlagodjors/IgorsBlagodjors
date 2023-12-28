@@ -6,22 +6,27 @@ part of 'response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ElectronicsFullRespons _$ElectronicsFullResponsFromJson(
+ElectronicsFullResponse _$ElectronicsFullResponseFromJson(
         Map<String, dynamic> json) =>
-    ElectronicsFullRespons(
-      products: (json['products'] as List<dynamic>)
+    ElectronicsFullResponse(
+      itemSummaries: (json['itemSummaries'] as List<dynamic>)
           .map((e) => ElectronicsResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 ElectronicsResponse _$ElectronicsResponseFromJson(Map<String, dynamic> json) =>
     ElectronicsResponse(
-      id: json['id'] as int?,
+      itemId: json['itemId'] as String?,
       title: json['title'] as String?,
-      description: json['description'] as String?,
-      price: json['price'] as int?,
-      brand: json['brand'] as String?,
-      category: json['category'] as String?,
-      images:
-          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      image: Image.fromJson(json['image'] as Map<String, dynamic>),
+      price: Price.fromJson(json['price'] as Map<String, dynamic>),
+    );
+
+Price _$PriceFromJson(Map<String, dynamic> json) => Price(
+      value: json['value'] as String?,
+      currency: json['currency'] as String?,
+    );
+
+Image _$ImageFromJson(Map<String, dynamic> json) => Image(
+      imageUrl: json['imageUrl'] as String?,
     );

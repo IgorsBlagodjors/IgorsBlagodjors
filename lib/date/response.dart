@@ -5,55 +5,67 @@ import 'package:json_annotation/json_annotation.dart';
 part 'response.g.dart';
 
 @JsonSerializable(createToJson: false)
-class ElectronicsFullRespons extends Equatable {
-  final List<ElectronicsResponse> products;
+class ElectronicsFullResponse extends Equatable {
+  final List<ElectronicsResponse> itemSummaries;
 
-  const ElectronicsFullRespons({
-    required this.products,
+  const ElectronicsFullResponse({
+    required this.itemSummaries,
   });
+  factory ElectronicsFullResponse.fromJson(Map<String, dynamic> json) =>
+      _$ElectronicsFullResponseFromJson(json);
 
   List<Electronics> toModel() {
-    return products
-        .map((e) => Electronics(
-              id: e.id ?? 0,
-              title: e.title ?? 'Unknown',
-              brand: e.brand ?? 'Unknown',
-              category: e.category ?? 'Unknown',
-              description: e.description ?? 'Unknown',
-              images: e.images ?? ['Unknown'],
-              price: e.price ?? 0,
-            ))
+    return itemSummaries
+        .map(
+          (e) => Electronics(
+            id: e.itemId ?? 'Unknown',
+            title: e.title ?? 'Unknown',
+            imageUrl: e.image.imageUrl ?? 'Unknown',
+            currency: e.price.currency ?? 'EUR',
+            priceValue: e.price.value ?? '0',
+          ),
+        )
         .toList();
   }
 
   @override
   List<Object?> get props => [
-        products,
+        itemSummaries,
       ];
-
-  factory ElectronicsFullRespons.fromJson(Map<String, dynamic> json) =>
-      _$ElectronicsFullResponsFromJson(json);
 }
 
 @JsonSerializable(createToJson: false)
 class ElectronicsResponse {
-  final int? id;
+  final String? itemId;
   final String? title;
-  final String? description;
-  final int? price;
-  final String? brand;
-  final String? category;
-  final List<String>? images;
-
-  ElectronicsResponse({
-    required this.id,
+  final Image image;
+  final Price price;
+  const ElectronicsResponse({
+    required this.itemId,
     required this.title,
-    required this.description,
+    required this.image,
     required this.price,
-    required this.brand,
-    required this.category,
-    required this.images,
   });
   factory ElectronicsResponse.fromJson(Map<String, dynamic> json) =>
       _$ElectronicsResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class Price {
+  final String? value;
+  final String? currency;
+  const Price({
+    required this.value,
+    required this.currency,
+  });
+  factory Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class Image {
+  final String? imageUrl;
+  const Image({
+    required this.imageUrl,
+  });
+  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
 }

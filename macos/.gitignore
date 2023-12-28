@@ -1,7 +1,7 @@
 # Flutter-related
 **/Flutter/ephemeral/
 **/Pods/
-
+lib/design_system/constants.dart
 # Xcode-related
 **/dgph
 **/xcuserdata/
