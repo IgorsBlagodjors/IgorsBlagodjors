@@ -8,14 +8,15 @@ class ElectronicsApiClient {
   ElectronicsApiClient(this._dio);
 
   Future<List<Electronics>> getAllElectronics(
-      {String? category, int offset = 0}) async {
+      {String? category, int offset = 0, int limit = 50}) async {
     final queryParam = {
       'q': category,
-      'limit': 50,
+      'limit': limit,
       'offset': offset,
     };
+
     final response = await _dio.get('item_summary/search',
-        queryParameters: queryParam, options: Options(headers: headers));
+        queryParameters: queryParam, options: Options(headers: headerAndKey));
     final fullResponse = ElectronicsFullResponse.fromJson(response.data);
     return fullResponse.toModel();
   }

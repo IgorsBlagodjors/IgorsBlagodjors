@@ -1,11 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
+import 'package:fake_tech_store/domain/electronics_class.dart';
 import 'package:fake_tech_store/presentation/widgets/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
-  final List<Map<String, dynamic>> items;
+  final List<Electronics> items;
   const Carousel({super.key, required this.items});
 
   @override
@@ -58,38 +60,50 @@ class _CarouselState extends State<Carousel> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 36, left: 24),
-                        child: Text(
-                          widget.items[index]['title'],
-                          style: AppStyles.body2BlackText.copyWith(
-                            color: AppColors.whiteColor,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 36, left: 24),
+                          child: Text(
+                            widget.items[index].title,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppStyles.body2BlackText.copyWith(
+                              color: AppColors.whiteColor,
+                            ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 4, left: 24),
-                        child: Text(
-                          widget.items[index]['price'],
-                          style: AppStyles.font12Weight500.copyWith(
-                            color: AppColors.lightBlue,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4, left: 24),
+                          child: Text(
+                            '${widget.items[index].currency} ${widget.items[index].priceValue}',
+                            style: AppStyles.font12Weight500.copyWith(
+                              color: AppColors.lightBlue,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                       right: 40,
                     ),
-                    child: Image.asset(
-                      widget.items[index]['image'],
-                      width: 57,
-                      height: 78,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 78,
+                          width: 57,
+                          child: Center(
+                            child: CachedNetworkImage(
+                              imageUrl: widget.items[index].imageUrl,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

@@ -15,7 +15,7 @@ class AppBottomNavigationBar extends StatefulWidget {
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    const CategoryHome(),
+    CategoryHome.withCubit(),
     const Search(),
     CheckoutHome.withCubit(),
     const AccountHome(),

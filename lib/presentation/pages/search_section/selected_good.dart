@@ -250,7 +250,8 @@ class _SelectedGoodState extends State<SelectedGood> {
                   AppButton(
                     text: 'Add to cart',
                     onPresess: () {
-                      _electronicsRepository.addToCard(widget.singleGood);
+                      _electronicsRepository.addCheckAndFaveItem(
+                          widget.singleGood, false);
                       setState(() {
                         isBlurred = true;
                       });

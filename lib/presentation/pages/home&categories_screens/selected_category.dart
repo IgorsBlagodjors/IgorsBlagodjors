@@ -1,7 +1,9 @@
+import 'dart:ui';
+
 import 'package:fake_tech_store/design_system/app_colors.dart';
 import 'package:fake_tech_store/design_system/text_style.dart';
-import 'package:fake_tech_store/presentation/bloc/category_state.dart';
-import 'package:fake_tech_store/presentation/bloc/category_state_cubit.dart';
+import 'package:fake_tech_store/presentation/pages/home&categories_screens/bloc/category_state.dart';
+import 'package:fake_tech_store/presentation/pages/home&categories_screens/bloc/category_state_cubit.dart';
 import 'package:fake_tech_store/presentation/widgets/button_back.dart';
 import 'package:fake_tech_store/presentation/widgets/grey_text.dart';
 import 'package:fake_tech_store/presentation/widgets/home_widgets/home_gw.dart';
@@ -27,15 +29,23 @@ class SelectedCategory extends StatefulWidget {
 class _SelectedCategoryState extends State<SelectedCategory> {
   late final CategoryStateCubit _cubit;
   late final ScrollController _scrollController;
-  bool _isLoadingMoreGoods = false;
+  late bool descendingOrder;
+  late bool _isLoadingMoreGoods;
+  late Axis _selectedDirection;
+  late bool _textOverflow;
+  bool test = false;
 
   @override
   void initState() {
     super.initState();
     _cubit = context.read();
-    _cubit.loadCategorys(widget.category);
+    descendingOrder = false;
+    _cubit.loadCategories(widget.category, descendingOrder);
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
+    _textOverflow = true;
+    _selectedDirection = Axis.vertical;
+    _isLoadingMoreGoods = false;
   }
 
   @override
@@ -63,7 +73,7 @@ class _SelectedCategoryState extends State<SelectedCategory> {
               Padding(
                 padding: const EdgeInsets.only(
                   top: 29,
-                  right: 4,
+                  left: 4,
                 ),
                 child: ButtonBack(
                   onTap: () {
@@ -104,9 +114,20 @@ class _SelectedCategoryState extends State<SelectedCategory> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const GreyTextWidget(
-                          text: 'Ascending price',
-                          textSize: 14,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              descendingOrder = !descendingOrder;
+                              _cubit.loadCategories(
+                                  widget.category, descendingOrder);
+                            });
+                          },
+                          child: GreyTextWidget(
+                            text: descendingOrder
+                                ? 'Descending price'
+                                : 'Ascending price',
+                            textSize: 14,
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -134,8 +155,11 @@ class _SelectedCategoryState extends State<SelectedCategory> {
                       top: 15,
                       left: 6,
                     ),
-                    child: Image.asset(
-                      'assets/icons/change_icon.png',
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        'assets/icons/change_icon.png',
+                      ),
                     ),
                   ),
                   Padding(
@@ -143,8 +167,20 @@ class _SelectedCategoryState extends State<SelectedCategory> {
                       top: 7,
                       left: 51,
                     ),
-                    child: Image.asset(
-                      'assets/icons/mise_en_page.png',
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedDirection =
+                              _selectedDirection == Axis.vertical
+                                  ? Axis.horizontal
+                                  : Axis.vertical;
+
+                          _textOverflow = !_textOverflow;
+                        });
+                      },
+                      child: Image.asset(
+                        'assets/icons/mise_en_page.png',
+                      ),
                     ),
                   ),
                 ],
@@ -153,6 +189,8 @@ class _SelectedCategoryState extends State<SelectedCategory> {
                 height: 32,
               ),
               HomeGW(
+                textOverflow: _textOverflow,
+                selectedDirection: _selectedDirection,
                 scrollController: _scrollController,
                 data: data,
                 isLoading: state.isLoading,
@@ -162,9 +200,31 @@ class _SelectedCategoryState extends State<SelectedCategory> {
         }
         return SafeArea(
           child: Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: child,
+            body: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: child,
+                ),
+                if (state.isLoading)
+                  Positioned.fill(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(
+                        sigmaX: 2,
+                        sigmaY: 2,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(255, 255, 255, 0.56),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         );
@@ -188,7 +248,7 @@ class _SelectedCategoryState extends State<SelectedCategory> {
 
   void _loadMoreGifs() {
     _isLoadingMoreGoods = true;
-    _cubit.loadCategorys(widget.category).then((_) {
+    _cubit.loadCategories(widget.category, true).then((_) {
       _isLoadingMoreGoods = false;
     });
   }
