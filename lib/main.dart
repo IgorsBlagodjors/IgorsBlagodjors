@@ -32,6 +32,9 @@ void main() {
       child: MaterialApp(
         theme: ThemeData(
           scaffoldBackgroundColor: AppColors.themeColorWhite,
+          popupMenuTheme: const PopupMenuThemeData(
+            color: AppColors.themeColorWhite,
+          ),
         ),
         home: const AppBottomNavigationBar(),
       ),

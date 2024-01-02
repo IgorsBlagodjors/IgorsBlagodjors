@@ -33,7 +33,10 @@ class _SelectedCategoryState extends State<SelectedCategory> {
   late bool _isLoadingMoreGoods;
   late Axis _selectedDirection;
   late bool _textOverflow;
-  bool test = false;
+  String selectedOption = 'Filters';
+  String selectedValue = 'Filters';
+
+  List<String> items = ['Filters', 'Filners', 'Filzers'];
 
   @override
   void initState() {
@@ -93,73 +96,79 @@ class _SelectedCategoryState extends State<SelectedCategory> {
               ),
               Wrap(
                 children: [
-                  Container(
-                    height: 33,
-                    width: 151,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.greyColor,
-                        width: 1.5,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        descendingOrder = !descendingOrder;
+                        _cubit.loadCategories(widget.category, descendingOrder);
+                      });
+                    },
+                    child: Container(
+                      height: 33,
+                      width: 151,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColors.greyColor,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(0, 16),
+                            blurRadius: 240,
+                            color: Color.fromRGBO(0, 0, 0, 0.08),
+                          )
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(6),
-                      boxShadow: const [
-                        BoxShadow(
-                          offset: Offset(0, 16),
-                          blurRadius: 240,
-                          color: Color.fromRGBO(0, 0, 0, 0.08),
-                        )
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              descendingOrder = !descendingOrder;
-                              _cubit.loadCategories(
-                                  widget.category, descendingOrder);
-                            });
-                          },
-                          child: GreyTextWidget(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          GreyTextWidget(
                             text: descendingOrder
                                 ? 'Descending price'
                                 : 'Ascending price',
                             textSize: 14,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 2,
+                            ),
+                            child: descendingOrder
+                                ? const Icon(
+                                    Icons.arrow_upward,
+                                    size: 15,
+                                    color: AppColors.greyColor,
+                                  )
+                                : const Icon(
+                                    Icons.arrow_downward,
+                                    size: 15,
+                                    color: AppColors.greyColor,
+                                  ),
                           ),
-                          child: Image.asset('assets/icons/vector.png'),
-                        ),
-                        Image.asset('assets/icons/change_icon.png'),
-                      ],
+                          const Icon(
+                            Icons.expand_more,
+                            size: 15,
+                            color: AppColors.greyColor,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(
-                      top: 8,
-                      left: 32,
-                    ),
+                    padding: EdgeInsets.only(top: 8, left: 32),
                     child: GreyTextWidget(
                       text: 'Filters',
                       textSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 15,
-                      left: 6,
-                    ),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Image.asset(
-                        'assets/icons/change_icon.png',
-                      ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, left: 6),
+                    child: Icon(
+                      Icons.expand_more,
+                      size: 15,
+                      color: AppColors.greyColor,
                     ),
                   ),
                   Padding(
@@ -174,7 +183,6 @@ class _SelectedCategoryState extends State<SelectedCategory> {
                               _selectedDirection == Axis.vertical
                                   ? Axis.horizontal
                                   : Axis.vertical;
-
                           _textOverflow = !_textOverflow;
                         });
                       },
@@ -242,11 +250,11 @@ class _SelectedCategoryState extends State<SelectedCategory> {
     double pixelRemainder = 300;
 
     if (remainingScrollExtent < pixelRemainder && !_isLoadingMoreGoods) {
-      _loadMoreGifs();
+      _loadMoreItems();
     }
   }
 
-  void _loadMoreGifs() {
+  void _loadMoreItems() {
     _isLoadingMoreGoods = true;
     _cubit.loadCategories(widget.category, true).then((_) {
       _isLoadingMoreGoods = false;
